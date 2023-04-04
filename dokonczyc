@@ -1,0 +1,14 @@
+import string
+
+def pesel(pesel):
+    if(pesel.isdigit()==True & len(pesel)!=11):
+        a =int(pesel)
+        a = a / 10
+        if(a%2==0):
+            print("kobieta")
+        else:
+            print("facet")
+    else:
+        print("zly format")
+
+pesel("27482767891")

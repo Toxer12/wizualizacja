@@ -1,0 +1,123 @@
+import math
+
+
+potega = []
+for i in range(1,15):
+    potega.append(i**5)
+print(potega)
+
+silnia =[]
+for a in range(1,21):
+    int = 1
+    for y in range(1,a):
+        int = int*y
+        silnia.append(int)
+print(silnia)
+
+e = []
+for i in range(0,20):
+    e.append(math.exp(i))
+print(e)
+
+nazwiska = ["wojak","perla","harnas","kaszlak","okocim"]
+licz = []
+for i in range(0,5):
+    licz.append(len(nazwiska[i]))
+print(nazwiska)
+print(licz)
+\\\\\\\\\\\
+import math
+list1=[1,2,3,4,5,6,7,8,9,10]
+list2=[10,20,30,40,50,60,70,80,90,100]
+print(list1+list2)
+
+def myFunc(e):
+    return e['numer']
+lista = [{'miesiac': 'styczen','numer': 1},{'miesiac': 'luty','numer': 2},
+         {'miesiac': 'marzec', 'numer': 3}, {'miesiac': 'kwiecien', 'numer': 4},
+         {'miesiac': 'maj', 'numer': 5}, {'miesiac': 'czerwiec', 'numer': 6},
+         {'miesiac': 'lipiec', 'numer': 7}, {'miesiac': 'sierpien', 'numer': 8},
+        {'miesiac': 'wrzesien','numer': 9},{'miesiac': 'pazdziernik','numer': 10},
+
+        {'miesiac': 'listopad','numer': 11},{'miesiac': 'grudzien','numer': 12},
+         ]
+
+lista.sort(key=myFunc)
+
+miesiace = ['luty','styczen','grudzien','listopad','marzec','kwiecien','pazdziernik','wrzesien','maj'
+            ,'czerwiec','sierpien','lipiec']
+numery = [12,5,2,11,3,8,7,9,1,6,4,10]
+numery.sort()
+final = []
+
+print(miesiace)
+
+def nazwiska_po_literze(nazwiska, litera):
+    wynik = []
+    for nazwisko in nazwiska:
+        if nazwisko[0] > litera:
+            wynik.append(nazwisko)
+    return wynik
+nazwiska = ['Kowalski', 'Nowak', 'Wójcik', 'Jankowski', 'Wojciechowski']
+print(nazwiska_po_literze(nazwiska, 'U'))
+
+def dlugie_nazwiska(nazwiska):
+    return [nazwisko for nazwisko in nazwiska if len(nazwisko) > 6]
+nazwiska = ['Jhonny', 'Brzeczyszczykowski', 'wafel','janikowski']
+print(dlugie_nazwiska(nazwiska))
+
+def czy_posortowane_od_najwiekszych(lista):
+    if lista == sorted(lista, reverse=True):
+        return True
+    else:
+        return False
+lista1 = [16, 6, 3, 2, 1]
+lista2 = [60, 54, 90, 6, 123]
+print(czy_posortowane_od_najwiekszych(lista1))
+print(czy_posortowane_od_najwiekszych(lista2))
+
+def potega_3(ciag):
+    return [x**3 for x in ciag]
+ciag1 = [2, 4, 6, 8, 10]
+ciag2 = [20, 40, 60, 80, 100]
+print(potega_3(ciag1))
+print(potega_3(ciag2))
+
+
+def func(lista, n1, n2):
+    return [n2 if x == n1 else x for x in lista]
+lista = [1.2, 3.4, 5.6, 7.8, 1.2, 9.0]
+print(func(lista, 1.2, 0.0))
+
+
+def func(lista, n1, n2, rel_tol=1e-9, abs_tol=0.0):
+    return [n2 if math.isclose(x, n1, rel_tol=rel_tol, abs_tol=abs_tol) else x for x in lista]
+lista1 = [4.5, 6.2, 3.0, 4.5, 3.0]
+lista2 = [2.5, 3.0, 2.5, 1.0, 3.5, 2.5, 3.0]
+print(func(lista1, 3.0, 7.0, rel_tol=1e-2))
+print(func(lista2, 2.5, 1.5, rel_tol=1e-1, abs_tol=0.1))
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+def dodaj(t, elem):
+    return t + (elem,)
+
+def usun(t, elem):
+    l = list(t)
+    l.remove(elem)
+    return tuple(l)
+
+t1 = (1, 2, 3)
+t2 = dodaj(t1, 4)
+print(t1)
+
+t3 = usun(t2, 2)
+print(t2)
+print(t3)
+
+def numery(a):
+    unique_a = list(set(a))
+    for i in unique_a:
+        print(i)
+
+
+a = [1, 2, 3, 1, 4, 2, 5, 6, 3, 5, 7]
+numery(a)

@@ -1,0 +1,142 @@
+# Cw 1
+names = ["michal", "nela", "ola", "przemek"]
+names1 = [name[0].upper()+name[1:] for name in names]
+print(names1)
+
+names2 = [name for name in names if name.find("l") != -1]
+print(names2)
+
+names3 = tuple([name for name in names1 if name[len(name)-1] == "a"])
+print(names3)
+
+names4 = sum(len(name) for name in names)
+print(names4)
+
+# Cw 2
+def iloczyn(*nums):
+    multiply = 1
+    for n in nums:
+        multiply *= n
+
+    return multiply
+
+print(iloczyn(4,2,3)) # 24
+
+def suma_nth_poteg(n, *args):
+    return sum([arg ** n for arg in args])
+
+print(suma_nth_poteg(2,4,2,3)) # 29
+
+def mean(*args):
+    if len(args) == 0: return 0
+    return sum(args) / len(args)
+
+print(mean(2,4,2,3)) # 11/4 = 2,75
+
+import math
+
+def gmean(*args):
+    if len(args) == 0: return 0
+
+    n = 1
+    for arg in args:
+        n *= arg
+
+    return pow(n, 1/len(args))
+
+print(gmean(2,2,5,7)) # (140, 1/4) ~ 3,44
+
+def dlugosc(*args):
+    dl = 0
+    for arg in args:
+            dl += len(arg)
+    return dl
+
+print(dlugosc("test", "one", "three")) # 12
+
+# Cw 3
+def fun_kwargs(**kwargs):
+    for name, number in kwargs.items():
+        print(f"{name} ma numer {number}")
+
+fun_kwargs(Jan="111-111-111", Adam="222-222-222", Radek="333-333-333", Ola="444-444-444")
+
+def srednie_zarobki(**kwargs):
+    zarobki = list(kwargs.values())
+    avg_zarobki = sum(zarobki) / len(zarobki)
+    return avg_zarobki
+
+print(srednie_zarobki(Styczeń=1000, Luty=2000, Marzec=1200, Kwiecień=1400, Maj=1400))
+print(srednie_zarobki(Czerwiec=1000, Lipiec=2000, Sierpień=2000, Wrzesień=500))
+
+# Cw 4
+def sprawdz_pesel(pesel):
+    if len(pesel) != 11:
+        print("Niepoprawna dlugosc")
+        return
+
+    if not pesel.isdigit():
+        print("Niepoprawny format")
+        return
+
+    # cyfry [1–6] – data urodzenia z określeniem stulecia urodzenia
+    # cyfry [7–10] – numer serii z oznaczeniem płci
+    # cyfra [10] – płeć
+    # cyfra [11] – cyfra kontrolna
+
+    # YYMMDDSSSPK
+
+    yyyy = int(pesel[0:2])
+    mm = int(pesel[2:4])
+    dd = int(pesel[4:6])
+    rodzaj = int(pesel[9])
+
+    if rodzaj % 2 == 0: plec = "kobieta"
+    else: plec = "mezczyzna"
+
+    if yyyy < 20: yyyy += 2000
+    elif yyyy < 40: yyyy += 1900
+    elif yyyy < 60: yyyy += 2000
+    elif yyyy < 80: yyyy += 1900
+    else: yyyy += 1800
+
+    from datetime import date
+    ur = date(yyyy, mm, dd)
+
+    print(f"Data ur: {ur}, plec: {plec}")
+
+sprawdz_pesel(input("Podaj numer PESEL: "))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# def srednie_zarobki(**kwargs):
+#     zarobki = list(kwargs.values())
+#     wzrost = [100 * (s - zarobki[0]) / zarobki[0] for s in zarobki[1:]]
+#     avg_zarobki = sum(zarobki) / len(zarobki)
+#     avg_wzrost = pow(math.prod([s/100+1 for s in wzrost]), 1/len(wzrost)) - 1
+    # return avg_zarobki, avg_wzrost
+
+
+# from datetime import date
+#     try:
+#         ur = date(yyyy, mm, dd)
+#     except ValueError:
+#         print("Niepoprawny PESEL")
+#         return

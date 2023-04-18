@@ -1,0 +1,24 @@
+class Polyniomal:
+    def __init__(self,*args):
+        self.wielomian= [ arg for arg in args]
+
+    def wypisz(self):
+        max_potega=len(self.wielomian)-1
+        print("Twoje rownanie to:")
+        for val in self.wielomian:
+            if max_potega>0:
+                print(f"{val}x^{max_potega}",end='')
+                print("+",end='')
+                max_potega-=1
+        print(self.wielomian[-1])
+
+    def dodaj(self,other):
+        wynik=[]
+        for i in range(0,len(self.wielomian)):
+            wynik.append(other.wielomian[i]+self.wielomian[i])
+        self.wielomian=wynik
+obiekt1=Polyniomal(4,3,2,3)
+obiekt2=Polyniomal(6,3,2,6)
+obiekt1.wypisz()
+obiekt1.dodaj(obiekt2)
+obiekt1.wypisz()

@@ -1,0 +1,61 @@
+#Zad1
+def lista(tab):
+    tab1=[]
+    x = 0
+    for i in range (len(tab)):
+
+        for o in range (len(tab1)):
+            if(tab[i]==tab1[o]):
+                x=1
+
+        if(x!=0):
+            x=0
+        else:
+            print(tab[i])
+            tab1.append(tab[i])
+
+tab=[1,5,6,2,2,3,3,1,6,6]
+lista(tab)
+
+#zad2
+
+#zad3
+
+#a
+
+#b
+def fibonnaci(n):
+    tablica = []
+    tablica.append(0)
+    tablica.append(1)
+    for x in range(2, n+1):
+        y = tablica[x-1]+tablica[x-2]
+        tablica.append(y)
+
+    return tablica[n]
+
+
+print(fibonnaci(10))
+
+#zad4
+def funkcja(*args,n):
+    iloczyn = 1
+    for x in args:
+        iloczyn = iloczyn * x**n
+    print(iloczyn)
+
+
+funkcja(1, 2, 3, 4, 5, n=3)
+
+#zad5
+
+#zad6
+def silnia(n):
+    if n == 0:
+        return 1
+    return n*silnia(n-1)
+
+def newton(n,k):
+    return silnia(n)/(silnia(k)*silnia(n-k))
+
+print(newton(7,2))

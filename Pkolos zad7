@@ -22,3 +22,46 @@ obiekt2=Polyniomal(6,3,2,6)
 obiekt1.wypisz()
 obiekt1.dodaj(obiekt2)
 obiekt1.wypisz()
+
+//////////////////////////
+#zad7
+class Polynomial:
+    def __init__(self,*args):
+
+        self.wielomian=[arg for arg in args]
+
+    def __str__(self):
+        output = ''
+        maxpotega=len(self.wielomian)-1
+        potega=maxpotega
+        for element in self.wielomian:
+            wyraz = ""
+            if potega > 1:
+                wyraz += f'{element}x^{potega}'
+            elif potega == 1:
+                wyraz += f'{element}x'
+            else:
+                wyraz += str(element)
+
+            if element > 0 and potega != maxpotega:
+                output += f'+{wyraz}'
+            else:
+                output += wyraz
+            potega -= 1
+
+        return output
+
+
+def __add__(self, other):
+    s = []
+    l1 = self.wielomian
+    l2 = other.wielomian
+    if len(l1) > len(l2):
+        for i in range(0, len(l1)):
+            s.append(self.wielomian[i] + other.wielomian[i])
+    else:
+        for y in range(0, len(l2)):
+             s.append(other.wielomian[y] + self.wielomian[y])
+
+wielomian = Polynomial(1, -2, 2)
+print(wielomian)

@@ -1,0 +1,25 @@
+import numpy as np
+
+panstwo=np.array(['China','Japan','Germany','USA','South Korea','India','Brazil','Mexico','Spain','Russia'])
+_1999 = np.array([0.56,8.1,5.3,5.63,2.36,0.53,1.1,0.99,2.28,0.94])
+_2014 = np.array([19.91,8.27,5.6,4.25,4.12,3.15,2.31,1.91,1.89,1.69])
+
+for i in range(0,len(_2014)):
+    a=((_2014[i]-_1999[i])/_1999[i])*100
+    print(panstwo[i],":",round(a,2),"%")
+
+for i in range(0,len(_2014)):
+    if(min(_2014))==_2014[i]:
+        print(panstwo[i],"produkowalo najmniej w 2014 roku")
+
+for i in range(0,len(_1999)):
+    if(max(_1999))==_1999[i]:
+        print(panstwo[i],"produkowalo najwiecej w 1999 roku")
+
+for i in range(0,len(_1999)):
+    if(_1999[i]>_2014[i]):
+        print(panstwo[i])
+        
+        ///////////////////////////
+        
+        

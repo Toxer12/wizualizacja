@@ -124,3 +124,28 @@ print(a+b)
 print(a-b)
 print(a*b)
 print(a/b)
+
+import pandas as pd
+import numpy as np
+
+df=pd.DataFrame(
+    {"a":[1,-3,2],
+     "b":[2,8,-5],
+     "c":[4,0.5,7],
+     "d":[5,10,3]},
+    index=["l1","l2","l3"])
+print(df)
+print("//////////////////////////")
+print(pd.melt(df))
+print("//////////////////////////")
+print(df.sort_values('b'))
+print(df.sort_values('b',ascending=False))
+print("//////////////////////////")
+print(df.rename(columns ={"a":"arbuz","b":"banan"}))
+print("//////////////////////////")
+print(df.sort_index())
+print("//////////////////////////")
+print(df.reset_index())
+print("//////////////////////////")
+print(df.drop(columns=['a','c']))
+print("//////////////////////////")

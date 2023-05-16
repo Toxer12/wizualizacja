@@ -1,0 +1,13 @@
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+sns.set_theme()
+penguins = sns.load_dataset("penguins")
+sns.relplot(
+    data=penguins,
+    x="bill_length_mm", y="bill_depth_mm", hue="sex",
+    palette="crest",size="body_mass_g",markers="species"
+
+)
+plt.show()

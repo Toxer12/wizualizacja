@@ -1,0 +1,241 @@
+
+
+import numpy
+
+my_array=numpy.array([10,12,14,16,18,20,22,24,26,28,30,32,34,36,38])
+print(my_array.shape)
+my_array=my_array.reshape(3,5)
+print("\n",my_array)
+
+
+my_array = numpy.add(my_array, 3)
+print("\n",my_array)
+
+my_array= numpy.multiply(my_array, 2)
+print("\n",my_array)
+
+my_array[numpy.where((my_array % 6) == 2)] = 0
+print("\n",my_array)
+
+
+def change(A, x):
+    B = numpy.copy(A)
+    B[B == 0] = x
+    return B
+
+print("\n",change(my_array,69))
+
+
+//////////////////
+import numpy as np
+
+produkcjaSamochodow = np.array(([1, 'China', 0.56, 19.91],
+                                [2, 'Japan', 8.1, 8.27],
+                                [3, 'Germany', 5.3, 5.6],
+                                [4, 'USA', 5.63, 4.25],
+                                [5, 'South Korea', 2.36, 4.12],
+                                [6, 'India', 0.53, 3.15],
+                                [7, 'Brazil', 1.1, 2.31],
+                                [8, 'Mexico', 0.99, 1.91],
+                                [9, 'Spain', 2.28, 1.89],
+                                [10, 'Russia', 0.94, 1.69]))
+
+print('Państwo; 1999; 2014')
+minMaxProdukcja = { '1999-min': produkcjaSamochodow[0],
+                    '1999-max': produkcjaSamochodow[0],
+                    '2014-min': produkcjaSamochodow[0],
+                    '2014-max': produkcjaSamochodow[0]}
+
+for row in produkcjaSamochodow:
+    panstwo = row[1]
+    stareDane = float(row[2])
+    noweDane = float(row[3])
+
+    if (stareDane < float(minMaxProdukcja['1999-min'][2])):
+        minMaxProdukcja['1999-min'] = row
+
+    if (stareDane > float(minMaxProdukcja['1999-max'][2])):
+        minMaxProdukcja['1999-max'] = row
+
+    if (noweDane < float(minMaxProdukcja['2014-min'][3])):
+        minMaxProdukcja['2014-min'] = row
+
+    if (stareDane > float(minMaxProdukcja['2014-max'][3])):
+        minMaxProdukcja['2014-max'] = row
+
+    procentowyWzrost = noweDane / stareDane
+    print(f'W {panstwo} procentowy wzrost produkcji samochodów wynosi: {round(procentowyWzrost, 2)}')
+//////////////
+import numpy as np
+
+statystyka = np.array((['Anna', 21, 'K', 65, 179, 'NIE'],
+                       ['Zofia', 40, 'K', 80, 179, 'TAK'],
+                       ['Sylwia', 13, 'K', 64, 151, 'NIE'],
+                       ['Katarzyna', 31, 'K', 69, 177, 'TAK'],
+                       ['Teresa', 34, 'K', 74, 170, 'NIE'],
+                       ['Tomasz', 14, 'M', 61, 157, 'TAK'],
+                       ['Cezary', 13, 'M', 66, 151, 'NIE'],
+                       ['Zenon', 28, 'M', 61, 153, 'TAK'],
+                       ['Filip', 20, 'M', 69, 160, 'NIE'],
+                       ['Adrian', 15, 'M', 77, 160, 'TAK']))
+
+imiona = np.array(sorted(statystyka[0:, 0]))
+print(imiona)
+
+okularnicy = statystyka[statystyka[0:, 5] == 'TAK'][0:, 0]
+print(okularnicy)
+
+sredniWiek = []
+for row in statystyka:
+    if row[2] == 'K' and 20 <= float(row[1]) and float(row[1]) <= 30:
+        sredniWiek.append(row)
+sredniWiek = np.array(sredniWiek)
+print(sredniWiek)
+
+sredniaWaga = []
+for row in statystyka:
+    if 60 <= float(row[3]) and float(row[3]) <= 80 and 160 <= float(row[4]) and float(row[4]) <= 180 and row[5] == 'NIE':
+        sredniaWaga.append(row)
+sredniaWaga = np.array(sredniaWaga)
+print(sredniaWaga)
+
+bmi = []
+for row in statystyka:
+    bmi.append(float(row[3])/(float(row[4])**2))
+bmi = np.array(bmi)
+print(bmi)
+/////////////////
+import random
+import pandas as pd
+import numpy as np
+
+df1 = pd.DataFrame([[2942,9840,2794,8891,81111,2933,8301,9125],
+                    ['Sylwia','Katarzyna','Teresa','Tomasz','Cezary',
+                     'Zenon','Filip','Adrian'],[13,31,34,14,13,28,20,15]]).T
+df1.columns=['ID','Name','Age']
+weight=[65,80,64,74,61,66,6]
+height=[179,179,151,177,170,157,151,153]
+glasses=[False,True,False,True,False,True,False,True]
+df2=pd.DataFrame([[2312,2336,2942,9840,2794,8891,8111,2933],
+                  ['Anna','Zofia','Sylwia','Katarzyna','Teresa',
+                   'Tomasz','Cezary','Zenon'],weight,height,glasses]).T
+df2.columns=['ID','Name','W','H','Glasses']
+print(df1)
+print(df2)
+df0=df1.merge(df2,how='inner')
+print(df0)
+df0=df1.merge(df2,how='outer')
+print(df0)
+print(df1.sort_values("Name"))
+print(df2['Name'][glasses])
+print(df1['Age']>20)
+
+////////////////////
+#Marcin Gorczyński, 169240, wariant 11
+import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
+import seaborn as sns
+#--------------------------zad1
+Plec=np.array([['Mężczyzna','Kobieta','Mężczyzna','Mężczyzna','Kobieta','Mężczyzna','Kobieta'
+               ,'Mężczyzna','Kobieta','Mężczyzna','Mężczyzna','Kobieta','Kobieta','Mężczyzna'
+               ,'Mężczyzna','Kobieta','Mężczyzna']])
+Wiek=np.array([[20,30,21,34,45,21,17,18,19,23,36,69,34,58,23,44,12]])
+
+Miejsce_zamieszkania=np.array([['Wieś','Miasto','Wieś','Miasto','Wieś','Miasto',
+                               'Miasto','Miasto','Wieś','Miasto','Miasto','Wieś',
+                               'Miasto','Miasto','Wieś','Wieś','Miasto']])
+Czy_pali_papierosy=np.array([['Tak','Tak','Tak','Nie','Nie','Tak','Nie','Nie','Tak','Nie','Nie',
+                   'Tak','Tak','Tak','Nie','Nie','Nie']])
+#1. Ile osób
+print(Plec.size)
+#2 ile mezczyzn
+print((Wiek[(Plec=='Mężczyzna')]).size)
+#3ile kobiet w wieku ponizej 40 lat
+print((Wiek[(Wiek<40)]).size)
+#4gdzie mieszka wiekszosc palacych meczyzn na wsi czy w miescie
+a=((Wiek[(Plec=='Mężczyzna')&(Miejsce_zamieszkania=='Wieś')]).size)
+b=((Wiek[(Plec=='Mężczyzna')&(Miejsce_zamieszkania=='Miasto')]).size)
+if(a>b):
+    print('Wiecej palacych mezczyzn mieszka na wsi')
+if (a<b):
+    print('wiecej palacych mezczyzn mieszka w miescie')
+else:
+    print('Tyle samo mieszka na wsi i w miescie')
+#5Sredni wiek osb meiszkajacy na wsi i w miescie
+print(np.average(Wiek[(Miejsce_zamieszkania=='Wieś')]))
+print(np.average(Wiek[(Miejsce_zamieszkania=='Miasto')]))
+#6 minimalny wiek osoby palacej
+print(np.min(Wiek[(Czy_pali_papierosy=='Tak')]))
+
+#--------------------------------------------zad2
+
+x = np.linspace(-4,4,100)
+y = x**3
+y2=np.exp(x)
+f, ax=plt.subplots(2)
+ax[0].plot(x,y,'green',linestyle="dotted",label="y=x^3")
+ax[1].plot(x,y2,'orange',linestyle="--",label="y=e^x")
+f.legend(title="Wykres",loc='center left')
+
+plt.show()
+#--------------------------zad3
+data = pd.read_csv('taxis.csv',sep = ',')
+#1Jaka byla najwieksza oplata (fare) w zoltej taksówce? (5%)
+print(np.max(data['fare'][data['color']=='yellow']))
+#2Ile taksówek kazdego kolory jest w tabelce? (5%)
+print((np.unique(data['color'])).size)
+#3Narysuj wykres punktowy zaleznosci odleglosci (distance) od oplaty (fare). Kolor punktow musi odpowiada¢ koloru taksówki. (10%)
+kolor=np.where(data["color"]=='yellow','y','g')
+plt.scatter(data['distance'],data['fare'],c=kolor)
+plt.xlabel('Distance')
+plt.ylabel('Fare')
+plt.title('Distance w zaleznosci od Fare')
+plt.show()
+#4Narysuj wykres slupkowy zaleznosci sumy wszystkich platnosci (fare) od sposoby oplaty(payment)
+a=[(np.sum(data['fare'][data['payment']=='cash'])),(np.sum(data['fare'][data['payment']=='credit card']))]
+b=np.unique(data['payment'])
+plt.bar(b,a)
+plt.show()
+
+#-----------------------------------zad4
+data3=sns.load_dataset('attention')
+sns.boxplot(x=data3['attention'],y=data3['score'],hue=data3['subject'],color='blue')
+plt.show()
+///////////////////
+import pandas as pd
+import numpy as np
+
+df=pd.DataFrame(
+    {"a":[1,-3,2],
+     "b":[2,8,-5],
+     "c":[4,0.5,7],
+     "d":[5,10,3]},
+    index=["l1","l2","l3"])
+df2=pd.DataFrame(
+    {"a":[1,-3,2],
+     "b":[2,8,-5],
+     "c":[4,0.5,7],
+     "d":[5,10,3]},
+    index=["l1","l2","l3"])
+print(df)
+print("//////////////////////////")
+print(pd.melt(df))
+print("/////////////////////////")
+print(df.sort_values('b'))
+print(df.sort_values('b',ascending=False))
+print("//////////////////////////")
+print(df.rename(columns ={"a":"arbuz","b":"banan"}))
+print("//////////////////////////")
+print(df.sort_index())
+print("//////////////////////////")
+print(df.reset_index())
+print("//////////////////////////")
+print(df.drop(columns=['a','c']))
+print("//////////////////////////")
+print(df+df2)
+
+print(f'Najmniejsza produkcja w 1999  {minMaxProdukcja["1999-min"][1]} i wynosiła {minMaxProdukcja["1999-min"][2]}')
+print(f'Największa produkcja w 1999 {minMaxProdukcja["1999-max"][1]} i wynosiła {minMaxProdukcja["1999-max"][2]}')
+print(f'Najmniejsza produkcja w 2014  {minMaxProdukcja["2014-min"][1]} i wynosiła {minMaxProdukcja["2014-min"][3]}')
+print(f'Największa produkcja w 2014 {minMaxProdukcja["2014-max"][1]} i wynosiła {minMaxProdukcja["2014-max"][3]}')

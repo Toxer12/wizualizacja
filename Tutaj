@@ -1,0 +1,48 @@
+#Derbin Mateusz 169233 Poprawa wariant 4
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+#zad 4.1
+Nazwa_rzeki=np.array([["Amazonka","Nil","Jangcy","Missisipi-Missouri",
+                       "Huang He","Ob Irtysz","Kongo","Mekong","Amur","Lena",
+                       "Parana","Mackanzie","Niger","Jenisej","Wołga"]])
+
+Kontynent=np.array([["Ameryka Południowa","Afryka","Eurazja","Ameryka Północna","Eurazja","Eurazja",
+                     "Afryka","Eurazja","Eurazja","Eurazja","Ameryka Południowa","Ameryka Północna",
+                     "Afryka","Eurazja","Eurazja"]])
+
+Długość=np.array([[7040,6695,6300,6020,5464,5410,4700,4500,4440,4400,4380,4240,4160,4102,3530]])
+
+Powierzchnia=np.array([[7200,2870,1807,3229,752,2972,3690,810,1855,2490,3100,1760,2117,2580,1360]])
+
+Państwa=np.array([[3,7,1,1,1,3,3,6,3,1,3,1,4,2,2]])
+
+#Ile rzek jest w tabelce
+print(Nazwa_rzeki.size)
+#ktore rzeki przeplywaja przez dokladnie 3 panstwa
+print((Nazwa_rzeki[(Państwa==3)]).size)
+#ile rzek maja dlugosc mniej niz 5000 km
+print((Nazwa_rzeki[(Długość<5000)].size))
+#wypisz nazwy rzek ktore zaczynaja sie z litery M
+print((Nazwa_rzeki[(Nazwa_rzeki>='M')]))
+#posortuj nazwy wedlug powierzchni malejaco
+
+#wypisz nazwy rzek z powierzchnia wieksza niz 2000 km^2 ktore sa w ameryce
+print((Nazwa_rzeki[(Powierzchnia>2000)&(Kontynent=="Ameryka Południowa")|(Powierzchnia>2000)&(Kontynent=="Ameryka Północna")]))
+
+#Zad 4.2
+x = np.linspace(-1,3,100)
+y = np.e**x
+x2 = np.linspace(-1,3,100)
+y2=np.e**(2*x)
+f, ax=plt.subplots(2)
+ax[0].plot(x,y,'blue',linestyle="solid",label="e^x")
+ax[1].plot(x2,y2,'green',linestyle="--",label="e^(2x)")
+f.legend(title="Wykres",loc='upper right')
+f.show()
+
+#Zad 4.3
+data = pd.read_csv('penguins.csv',sep = ',')
+
+#jaka jest srednia waga u pingwinow
+print(np.average(data['body_mass_g'][data['species']=='Chinstrap']))
